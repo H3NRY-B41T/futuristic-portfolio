@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: Global glow theme */
+html {
+  scroll-behavior: smooth;
+  background-color: black;
+  color: cyan;
+}

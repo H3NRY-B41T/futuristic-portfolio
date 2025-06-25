@@ -1,0 +1,56 @@
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+}
+
+.glitch-text {
+  font-size: 3rem;
+  color: cyan;
+  position: relative;
+  text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 30px cyan;
+  animation: flicker 1.5s infinite alternate;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.glitch-text::before {
+  top: -2px;
+  left: 2px;
+  color: magenta;
+  clip: rect(0, 900px, 0, 0);
+  animation: glitchTop 2s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  top: 2px;
+  left: -2px;
+  color: lime;
+  clip: rect(0, 900px, 0, 0);
+  animation: glitchBottom 2s infinite linear alternate-reverse;
+}
+
+@keyframes flicker {
+  from { opacity: 1; }
+  to { opacity: 0.8; }
+}
+
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  50% { clip: rect(0, 9999px, 10px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  50% { clip: rect(10px, 9999px, 9999px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
